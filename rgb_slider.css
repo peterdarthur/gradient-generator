@@ -1,0 +1,143 @@
+*{
+  clear: both;
+}
+
+body {background-color: #ddd; padding: 0px; margin: 0px;}
+h1 {margin: 25px 25px 0px; position: relative; z-index: 4;}
+
+.swatches-set{position: fixed; top: 0px;left: 0px; z-index: 1;}
+.slider-range {margin-top: 30px; left: 0px; clear:both;z-index: 2;}
+
+div.uiControls {
+  width: 200px;
+  padding: 25px;
+  margin: 25px;
+  border: 1px solid #ddd;
+  background: #eaeaea;
+  position: relative;
+  z-index: 3;
+}
+
+.red, .green, .blue, .opacity, .slider-range {margin-top: 10px;}
+.red, .green, .blue, .opacity {width: 200px;}
+.slider-range {width: 150px;}
+
+  .ui-slider-horizontal {height: 1px;}
+  .ui-slider .ui-slider-handle {height: 8px;}
+  .slider-range.ui-slider-horizontal .ui-slider-handle {margin-left: -4px;}
+
+ 
+  div.set-buttons {margin-top: 30px; overflow: auto;}
+  button.select-set {display: block; float: left; clear: none; margin-right: 10px;}
+  button.select-set { width: auto; }
+  /*div.add-new { width: 30px; }*/
+
+  .swatchesContainer {
+    width: 900px;
+    height: 900px;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    /*left: 420px;*/
+    clear: none;
+    z-index: 1;
+  }
+
+  .swatch {
+    /*opacity: 0.3;*/
+  }
+
+  .vert {
+    float: left;
+    clear: none;
+    position: relative;
+    height: 100%;
+    width: 120px;
+    top: 0px;
+  }
+
+  .vert.b {
+    margin-left: 10px; /*default*/
+    margin-right: 20px; /*default*/
+  }
+
+  .vert.a {
+    margin-left: 20px; /*default*/
+    margin-right: 10px; /*default*/
+  }
+
+  .horiz {
+    float: left;
+    width: 100%;
+    height: 120px;
+    left: 0px;
+    margin-top: 20px; /*default*/
+  }
+
+  .horiz.b {
+    margin-top: 10px; /*default*/
+    margin-bottom: 20px; /*default*/
+  }
+
+  .horiz.a {
+    margin-top: 20px; /*default*/
+    margin-bottom: 10px; /*default*/
+  }
+
+  .color {
+    padding: .5em;
+    margin-right: .4em;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    width: 200px;
+  }
+
+  /* Use Mac Webkit Button Styles */
+  button {
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: #111;
+    background-color: #fdfdfd;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border-width: 1px;
+    border-style: outset;
+    border-color: #c0c0c0;
+    border-radius: 3px;
+    border-image: initial;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    margin: 0em 0em 0em 0em;
+    font: 11px BlinkMacSystemFont, "Tahoma", "Arial", sans-serif;
+    min-width: 48px;
+  }
+
+
+
+  button.select-set[data-set='3']{background-color: #222; color: #ee44ff;}
+
+  .ui-slider .ui-slider-handle {width: 4px;}
+  .ui-slider-horizontal .ui-slider-handle {margin-left: -2px;}
+
+  .red .ui-slider-range { background: #ef2929; }
+  .red .ui-slider-handle { border-color: #ef2929; }
+  .green .ui-slider-range { background: #8ae234; }
+  .green .ui-slider-handle { border-color: #8ae234; }
+  .blue .ui-slider-range { background: #729fcf; }
+  .blue .ui-slider-handle { border-color: #729fcf; }
+
+  form {
+    clear: both;
+  }
+
+  .add-new {cursor: pointer;}
+
+
+  
