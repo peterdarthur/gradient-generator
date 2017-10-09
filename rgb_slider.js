@@ -29,7 +29,7 @@ function hexFromRGB(r, g, b) {
 
       }
     });
-    console.log(hex);
+    // console.log(hex);
     return hex.join( "" ).toUpperCase();
 }
 
@@ -41,7 +41,7 @@ function setRGBA(r,g,b,a){
     var rgba = "rgba("+r+", "+g+", "+b+", "+a+")";
     $( "#sw"+ selectedSet +" .swatch" ).css("background-color", rgba );
     // console.log("sw color is "+rgba);
-    console.log("opacity is"+a)
+    // console.log("opacity is"+a)
     $( "#ui"+ selectedSet +" .color" ).val("Color: " + rgba );
     $( "#ui"+ selectedSet +" .color" ).css("background-color", rgba );
 
@@ -124,12 +124,12 @@ function refreshWidthSlider(event,ui) {
         var spaceOutside = ui.values[0];
         var width = ui.values[1] - ui.values[0];
         var spaceInside = 150 - ui.values[1];
-        $( ".positionWidthLabel" ).html("Outside: " + spaceOutside + "px<br>Width: " + width + "px<br>Inside: " + spaceInside + "px");
+        $( ".stats" ).html("Outside: " + spaceOutside + "px<br>Width: " + width + "px<br>Inside: " + spaceInside + "px");
         $( "#sw"+selectedSet+" .vert.a").css({"margin-left":spaceOutside, "width":width, "margin-right":spaceInside});
         $( "#sw"+selectedSet+" .vert.b").css({"margin-left":spaceInside, "width":width, "margin-right":spaceOutside});
         $( "#sw"+selectedSet+" .horiz.a").css({"margin-top":spaceOutside, "height":width, "margin-bottom":spaceInside});
         $( "#sw"+selectedSet+" .horiz.b").css({"margin-top":spaceInside, "height":width, "margin-bottom":spaceOutside});
-        console.log("width changed");
+        // console.log("width changed");
 }
 
 function initializeSliders(state) {
@@ -170,7 +170,7 @@ function initializeSliders(state) {
     // console.log("blue initialized");
 
     // start position and width slider
-    $( ".slider-range" ).slider({
+    $( ".range" ).slider({
       range: true,
       min: 0,
       max: 150,
@@ -186,7 +186,7 @@ function initializeSliders(state) {
         var spaceOutside = leftPx;
         var width = rightPx - leftPx;
         var spaceInside = 150 - rightPx;
-        $( ".positionWidthLabel" ).html("Outside: " + spaceOutside + "px<br>Width: " + width + "px<br>Inside: " + spaceInside + "px");
+        $( ".stats" ).html("Outside: " + spaceOutside + "px<br>Width: " + width + "px<br>Inside: " + spaceInside + "px");
         $( "#sw"+selectedSet+" .vert.a").css({"margin-left":spaceOutside, "width":width, "margin-right":spaceInside});
         $( "#sw"+selectedSet+" .vert.b").css({"margin-left":spaceInside, "width":width, "margin-right":spaceOutside});
         $( "#sw"+selectedSet+" .horiz.a").css({"margin-top":spaceOutside, "height":width, "margin-bottom":spaceInside});
@@ -258,26 +258,26 @@ $(function(){
 
 
 // Shadow Sandbox
-function makeShadows() {
-  // grab element
-  $.each($('.shadowed'), function(){
-   var top = $(this).top();
-   var bot = $(this).bottom();
+// function makeShadows() {
+//   // grab element
+//   $.each($('.shadowed'), function(){
+//    var top = $(this).top();
+//    var bot = $(this).bottom();
    
-   // NOT WORKING
-   console.log(top);
+//    // NOT WORKING
+//    console.log(top);
 
-    if ($(hasShadow).hasClass('shadow-left')) {
+//     if ($(hasShadow).hasClass('shadow-left')) {
 
-    } else if ($(hasShadow).hasClass('shadow-right')) {
+//     } else if ($(hasShadow).hasClass('shadow-right')) {
 
-    } else {
+//     } else {
 
-    }
-  });
-}
+//     }
+//   });
+// }
 
-makeShadows();
+// makeShadows();
 
 
 });

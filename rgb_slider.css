@@ -5,8 +5,14 @@
 body {background-color: #ddd; padding: 0px; margin: 0px;}
 h1 {margin: 25px 25px 0px; position: relative; z-index: 4;}
 
+.self-clear:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 .swatches-set{position: fixed; top: 0px;left: 0px; z-index: 1;}
-.slider-range {margin-top: 30px; left: 0px; clear:both;z-index: 2;}
+.range {width: 150px; margin-top: 30px; left: 0px; clear:both;z-index: 2;}
 
 div.uiControls {
   width: 200px;
@@ -18,18 +24,18 @@ div.uiControls {
   z-index: 3;
 }
 
-.red, .green, .blue, .opacity, .slider-range {margin-top: 10px;}
+.red, .green, .blue, .opacity, .range {margin-top: 10px; border-radius: 0px;}
 .red, .green, .blue, .opacity {width: 200px;}
-.slider-range {width: 150px;}
 
-  .ui-slider-horizontal {height: 1px;}
-  .ui-slider .ui-slider-handle {height: 8px;}
-  .slider-range.ui-slider-horizontal .ui-slider-handle {margin-left: -4px;}
+  .ui-slider-horizontal {height: 8px;}
+  .ui-slider .ui-slider-handle {height: 12px; margin-top:2px;}
+  .range.ui-slider-horizontal .ui-slider-handle {margin-left: 0px;}
+  .ui-slider-range.ui-corner-all {border-radius: 0px;}
 
  
-  div.set-buttons {margin-top: 30px; overflow: auto;}
-  button.select-set {display: block; float: left; clear: none; margin-right: 10px;}
-  button.select-set { width: auto; }
+  div.set-add-clear-container {margin-top: 30px; padding-bottom: 4px; border-bottom: 1px solid #bbb;}
+  div.set-buttons {margin-top: 4px; overflow: auto;}
+  button.select-set {display: block; float: left; clear: none; margin-right: 10px; width: auto; }
   /*div.add-new { width: 30px; }*/
 
   .swatchesContainer {
@@ -137,7 +143,8 @@ div.uiControls {
     clear: both;
   }
 
-  .add-new {cursor: pointer;}
+  .add-new {cursor: pointer; float: left;}
+  .clear-sets {float: right; clear: none;}
 
 
   
