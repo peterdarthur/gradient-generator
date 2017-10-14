@@ -4,6 +4,7 @@
 
 body {background-color: #ddd; padding: 0px; margin: 0px;}
 h1 {margin: 25px 25px 0px; position: relative; z-index: 4;}
+a {text-decoration: none; color: inherit;}
 
 .self-clear:after {
   content: "";
@@ -49,9 +50,9 @@ div.uiControls {
     z-index: 1;
   }
 
-  .swatch {
-    /*opacity: 0.3;*/
-  }
+  /* .swatch {
+    opacity: 0.3;
+  } */
 
   .vert {
     float: left;
