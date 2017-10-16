@@ -25,6 +25,9 @@ div.uiControls {
   z-index: 3;
 }
 
+#toggleMirrored.mirrored {content: "Mirrored";}
+#toggleMirrored.linear {content: "Linear";}
+
 .red, .green, .blue, .opacity, .range {margin-top: 10px; border-radius: 0px;}
 .red, .green, .blue, .opacity {width: 200px;}
 
@@ -128,7 +131,7 @@ div.uiControls {
 
 
 
-  button.select-set[data-set='3']{background-color: #222; color: #ee44ff;}
+  /* button.select-set[data-set='3']{background-color: #222; color: #ee44ff;} */
 
   .ui-slider .ui-slider-handle {width: 4px;}
   .ui-slider-horizontal .ui-slider-handle {margin-left: -2px;}

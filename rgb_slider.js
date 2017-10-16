@@ -13,7 +13,7 @@ var r,g,b,a;
 var sets = [
       {
           "r": 2,
-          "g": 200,
+          "g": 110,
           "b": 60,
           "a": 30,
           "leftPx": 20,
@@ -77,6 +77,9 @@ function applyData(r,g,b,a,leftPx,rightPx,state){
     // add color and opacity to UI color sample
     $( ".color" ).val("Color: " + rgba );
     $( ".color" ).css("background-color", rgba );
+
+    // add color and opacity to this Set Button
+    $('.select-set[data-set="'+selectedSet+'"]').css('background-color',rgba);
     // determine if text should be white or black over this color in UI color sample
     textColorUpdate(r,g,b,a);
 
@@ -140,22 +143,24 @@ function refreshSwatch(change,state) {
 
 function widthFromSlider(event,ui) {
   console.log('widthFromSlider()');
-  updateWidth(ui.values[0],ui.values[1]);
+  var key = (selectedSet - 1);
+  updateWidth(ui.values[0],ui.values[1],key);
 }
 
-function updateWidth(leftPx,rightPx){
+function updateWidth(leftPx,rightPx,key){
   console.log('updateWidth()');
   // update data
-  sets[selectedSet-1].leftPx = leftPx;
-  sets[selectedSet-1].rightPx = rightPx;
+  sets[key].leftPx = leftPx;
+  sets[key].rightPx = rightPx;
   var spaceOutside = leftPx;
   var width = rightPx - leftPx;
   var spaceInside = 150 - rightPx;
+  var index = key+1;
   $( ".stats" ).html("Outside: " + spaceOutside + "px<br>Width: " + width + "px<br>Inside: " + spaceInside + "px");
-  $( "#sw"+selectedSet+" .vert.a").css({"margin-left":spaceOutside, "width":width, "margin-right":spaceInside});
-  $( "#sw"+selectedSet+" .vert.b").css({"margin-left":spaceInside, "width":width, "margin-right":spaceOutside});
-  $( "#sw"+selectedSet+" .horiz.a").css({"margin-top":spaceOutside, "height":width, "margin-bottom":spaceInside});
-  $( "#sw"+selectedSet+" .horiz.b").css({"margin-top":spaceInside, "height":width, "margin-bottom":spaceOutside});
+  $( "#sw"+index+" .vert.a").css({"margin-left":spaceOutside, "width":width, "margin-right":spaceInside});
+  $( "#sw"+index+" .vert.b").css({"margin-left":spaceInside, "width":width, "margin-right":spaceOutside});
+  $( "#sw"+index+" .horiz.a").css({"margin-top":spaceOutside, "height":width, "margin-bottom":spaceInside});
+  $( "#sw"+index+" .horiz.b").css({"margin-top":spaceInside, "height":width, "margin-bottom":spaceOutside});
 }
 
 function initializeSliders() {
@@ -213,7 +218,8 @@ function initializeSliders() {
     // Set Swatch Divs to reflect initialized LeftPx and RightPx values
     var leftPx = sets[selectedSet-1].leftPx;
     var rightPx = sets[selectedSet-1].rightPx;
-    updateWidth(leftPx,rightPx);
+    var key = selectedSet - 1;
+    updateWidth(leftPx,rightPx,key);
         
     // opacity
     $( ".opacity" ).slider({
@@ -257,7 +263,8 @@ function updateSliders() {
     $( ".range" ).slider({values: [ leftPx , rightPx ]});
 
     // Set Swatch Divs to reflect initialized LeftPx and RightPx values
-    updateWidth(leftPx,rightPx);
+    var key = (selectedSet - 1);
+    updateWidth(leftPx,rightPx,key);
 
     // opacity
     $( ".opacity" ).slider({value: a});
@@ -268,6 +275,20 @@ $(function(){
       // only on page load
       initializeSliders();
       getData('initSet');
+
+      $('#toggleMirrored').click(function(){
+      $('.swatch.ab').toggleClass('b').toggleClass('a');
+      $(this).toggleClass('mirrored').toggleClass('linear');
+
+      // reapply widths, as new a/b swatch bars (a = linear, b = mirrored)
+      $.each(sets, function(key, val) {
+          updateWidth(sets[key].leftPx,sets[key].rightPx,key);
+      });
+
+        
+
+      });
+      
       
       // add new
       $( ".add-new" ).click(function(){     
