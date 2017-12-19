@@ -1,5 +1,3 @@
-// ____ Update all sliders on selectedSet change
-// ____ Make width slider functional for more than just the first set
 // ____ Create scale slider / add/subtract horiz/vert lines option
 // ____ Create saved set code for import/export
 // ____ Create printable version
@@ -21,7 +19,7 @@ var sets = [
       }
 ];
 
-// convert #ffffff to rgba(255,255,255,1)
+// convert #ffffff to rgb(255,255,255)
 function hexFromRGB(r, g, b) {
     var hex = [
       r.toString( 16 ),
@@ -44,9 +42,9 @@ function randomIntFromInterval(min,max){
 }
 
 // get data to pass into applyData() to set up a new set - must happen at page load and after random set data is generated
-// state is either 'init' or 0
+// state is either 'initSet' or 0
 function getData(state) {
-  console.log("getData()");
+  // console.log("getData()");
 
     r = sets[selectedSet-1].r,
     g = sets[selectedSet-1].g,
@@ -64,7 +62,7 @@ function getData(state) {
 // runs within getData();
 // applies initial colors, ranges, opacity for the selected set
 function applyData(r,g,b,a,leftPx,rightPx,state){
-  console.log('applyData()');
+  // console.log('applyData()');
   var rgba = "rgba("+r+", "+g+", "+b+", "+a/100+")";
 
   // once per set (at selectedSet init)
@@ -99,14 +97,14 @@ function textColorUpdate(r,g,b,a) {
 }
 
 function refreshSwatch(change,state) {
-  console.log("refreshSwatch()");
+  // console.log("refreshSwatch()");
 
     // get defaults to pass along if unchanged
     var r = sets[selectedSet-1].r,
         g = sets[selectedSet-1].g,
         b = sets[selectedSet-1].b,
         a = (sets[selectedSet-1].a);
-        console.log("Slider Value: " + $( ".opacity" ).slider( "value" ));
+        // console.log("Slider Value: " + $( ".opacity" ).slider( "value" ));
 
     // future use (dark vs light)
     if (change === "all") { // console.log("all refresh");
@@ -133,8 +131,8 @@ function refreshSwatch(change,state) {
     } else if (change === "opacity") { // console.log("blue refresh");
       a = $( ".opacity" ).slider( "value" ); //set value based on slider
       sets[selectedSet-1].a = a; //update sets array
-      console.log('Opacity Updated in the Set to: '+sets[selectedSet-1].a);
-      console.log('Opacity decimal: '+a);
+      // console.log('Opacity Updated in the Set to: '+sets[selectedSet-1].a);
+      // console.log('Opacity decimal: '+a);
 
     }
 
@@ -142,13 +140,13 @@ function refreshSwatch(change,state) {
 }
 
 function widthFromSlider(event,ui) {
-  console.log('widthFromSlider()');
+  // console.log('widthFromSlider()');
   var key = (selectedSet - 1);
   updateWidth(ui.values[0],ui.values[1],key);
 }
 
 function updateWidth(leftPx,rightPx,key){
-  console.log('updateWidth()');
+  // console.log('updateWidth()');
   // update data
   sets[key].leftPx = leftPx;
   sets[key].rightPx = rightPx;
@@ -164,7 +162,7 @@ function updateWidth(leftPx,rightPx,key){
 }
 
 function initializeSliders() {
-  console.log("initializeSliders()");
+  // console.log("initializeSliders()");
   
   // get data for this set
   var r = sets[selectedSet-1].r,
@@ -241,15 +239,13 @@ function initializeSliders() {
 
 //
 function updateSliders() {
-  console.log("updateSliders()");
+  // console.log("updateSliders()");
   var r = sets[selectedSet-1].r,
       g = sets[selectedSet-1].g,
       b = sets[selectedSet-1].b,
       a = sets[selectedSet-1].a,
       leftPx = sets[selectedSet-1].leftPx,
       rightPx = sets[selectedSet-1].rightPx;
-
-  // if (state !== "initial") { $( ".red, .green, .blue", ".opacity" ).slider("destroy");}
 
     // console.log("updating red slider");
     $( ".red" ).slider({value: r});
@@ -292,7 +288,7 @@ $(function(){
       
       // add new
       $( ".add-new" ).click(function(){     
-        console.log("click plus");
+        // console.log("click plus");
         setCount++; 
         selectedSet = setCount;
         // console.log('setCount and selectedSet is ' + setCount);
