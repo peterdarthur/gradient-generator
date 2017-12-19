@@ -1,4 +1,6 @@
 // ____ Create scale slider / add/subtract horiz/vert lines option
+// ____ Delete Set
+// ____ Bring Set to Front/Back
 // ____ Create saved set code for import/export
 // ____ Create printable version
 
