@@ -1,8 +1,10 @@
 // ____ Create scale slider / add/subtract horiz/vert lines option
 // ____ Delete Set
+// ____ Duplicate Set
 // ____ Bring Set to Front/Back
 // ____ Create saved set code for import/export
 // ____ Create printable version
+// ____ http://www.colourlovers.com/api  --  http://www.colourlovers.com/api/palettes/top?format=json
 
 var setCount = 1; // total number of sets
 var selectedSet = 1; // selected set #
@@ -156,7 +158,7 @@ function updateWidth(leftPx,rightPx,key){
   var width = rightPx - leftPx;
   var spaceInside = 150 - rightPx;
   var index = key+1;
-  $( ".stats" ).html("Outside: " + spaceOutside + "px<br>Width: " + width + "px<br>Inside: " + spaceInside + "px");
+  // $( ".stats" ).html("Outside: " + spaceOutside + "px<br>Width: " + width + "px<br>Inside: " + spaceInside + "px");
   $( "#sw"+index+" .vert.a").css({"margin-left":spaceOutside, "width":width, "margin-right":spaceInside});
   $( "#sw"+index+" .vert.b").css({"margin-left":spaceInside, "width":width, "margin-right":spaceOutside});
   $( "#sw"+index+" .horiz.a").css({"margin-top":spaceOutside, "height":width, "margin-bottom":spaceInside});
@@ -275,16 +277,13 @@ $(function(){
       getData('initSet');
 
       $('#toggleMirrored').click(function(){
-      $('.swatch.ab').toggleClass('b').toggleClass('a');
-      $(this).toggleClass('mirrored').toggleClass('linear');
+        $('.swatch.ab').toggleClass('b').toggleClass('a');
+        $(this).toggleClass('mirrored').toggleClass('linear');
 
-      // reapply widths, as new a/b swatch bars (a = linear, b = mirrored)
-      $.each(sets, function(key, val) {
-          updateWidth(sets[key].leftPx,sets[key].rightPx,key);
-      });
-
-        
-
+        // reapply widths, as new a/b swatch bars (a = linear, b = mirrored)
+        $.each(sets, function(key, val) {
+            updateWidth(sets[key].leftPx,sets[key].rightPx,key);
+        });
       });
       
       
